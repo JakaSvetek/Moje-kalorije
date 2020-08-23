@@ -1,0 +1,67 @@
+% rebase('base.html')
+
+<div class="row">
+    <div class="col-md-4">
+        <h3 id="datum">
+            Dan: {{datum.strftime('%d. %m. %Y')}}
+        </h3>
+    </div>
+    <div class="col-md-2 ml-auto">
+        <form action="/odjava/" method="POST">
+            <input type="submit" value="Odjava" style="height:50px; width:100px">
+        </form>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <h2>Obroki:</h2><br>
+    <div class="row">
+        % for tip_obroka in tipi_obrokov:
+        <div class="col">
+            <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                <h4 class="text-center">{{tip_obroka}}</h4><br>
+            % if tip_obroka in oseba.tipi_obrokov_za_datum(datum):
+            %   obrok = oseba.pridobi_obroke_za_datum(datum)[oseba.tipi_obrokov_za_datum(datum).index(tip_obroka)]
+                <h4 class="text-center">{{obrok.kalorije}}</h4>
+            % else:
+                <form action="/dodaj_obrok/" method="POST">
+                    <input type="hidden" name="datum" value="{{datum}}">
+                    <input type="hidden" name="tip_obroka" value="{{tip_obroka}}">
+                    <input type="number" name="kalorije" placeholder="kalorije">
+                    <input type="submit" value="Vpiši">            
+                </form>
+            % end
+            </div>
+        </div>           
+        % end
+    </div>
+</div>
+
+<div class="container-fluid">
+    <h2>Vadbe:</h2><br>
+    <div class="row justify-content-start">
+        % for vadba in oseba.pridobi_vadbe_za_datum(datum):
+        <div class="col-md-2">
+            <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                <h3 class="text-center">{{vadba.tip_vadbe}}</h3><br>
+                <h4 class="text-center">{{vadba.kalorije}}</h4>
+            </div>
+        </div>
+        % end
+        <div class="col-md-2">
+            <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                <form action="/dodaj_vadbo/" method="POST">
+                    <input type="hidden" name="datum" value="{{datum}}">
+                    <p class="text-center"><input type="text" name="vadba" placeholder="Nova vadba"></p>
+                    <p class="text-center"><input type="number" name="kalorije" placeholder="Kalorije"></p>
+                    <p class="text-center"><input type="submit" value="Vpiši"></p>            
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <h3>Skupno: {{oseba.dnevne_kalorije(datum) // 1}} kcal</h3>
+    <h3>Na voljo še: {{oseba.dnevne_preostale_kalorije(datum) // 1}} kcal</h3>
+</div>

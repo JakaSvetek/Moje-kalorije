@@ -1,0 +1,42 @@
+% rebase('base.html')
+
+% if error:
+<div class="container" style="font-size: xx-large;">
+    <p style="font-size: xx-large; color: red;">{{error}}</p>
+</div>
+% end
+
+<div class="row">
+    <div class="col-4" style="margin-top: 1cm; margin-bottom: 1cm;">
+        <h2>PRIJAVA</h2>
+        <form action="/prijava/" method="POST">
+            Uporabniško ime: <input type="text" name="uporabnisko_ime" placeholder="Uporabniško ime" style="margin-bottom: 2mm;"><br>
+            Geslo: <input type="password" name="geslo" placeholder="Geslo" style="margin-bottom: 2mm;"><br>
+            <input type="submit" value="Prijavi se">           
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-4">
+        <h2>REGISTRACIJA</h2>
+        <form action="/registracija/" method="POST">
+            Uporabniško ime: <input type="text" name="uporabnisko_ime" placeholder="Uporabniško ime" required style="margin-bottom: 2mm;"><br>
+            Geslo: <input type="password" name="geslo" placeholder="Geslo" required style="margin-bottom: 2mm;"><br>
+            Spol: 
+            <input type="radio" name="spol" value="Moški" checked style="margin-bottom: 2mm;"> Moški
+            <input type="radio" name="spol" value="Ženski" style="margin-bottom: 2mm;"> Ženski<br>
+            Višina: <input type="number" name="visina" placeholder="Višina" required style="margin-bottom: 2mm;"><br>
+            Teža: <input type="number" name="teza" placeholder="Teža" required style="margin-bottom: 2mm;"><br>
+            Starost: <input type="number" name="starost" placeholder="Starost" required style="margin-bottom: 2mm;"><br>
+            Moj cilj je:
+            <select id="cilj" name="cilj" required style="margin-bottom: 2mm;">
+                % for cilj in cilji:
+                <option value="{{cilj}}">{{cilj}}</option>
+                % end
+            </select>
+            &nbsp;&nbsp;telesno težo.<br>
+            <input type="submit" value="Registriraj se">            
+        </form>
+    </div>
+</div>
