@@ -38,44 +38,30 @@ class Uporabnik:
         self.vadbe = []
 
     def priporocen_dnevni_vnos(self):
-
         if self.postava.spol == "Moški":
-
             if self.cilj == "Hitro pridobiti":
                 return 85 + 6.3 * int(self.postava.visina) + 15.5 * int(self.postava.teza) - 5.6 * int(self.postava.starost)
-
             elif self.cilj == "Pridobiti":
                 return 80 + 6 * int(self.postava.visina) + 15 * int(self.postava.teza) - 6 * int(self.postava.starost)
-
             elif self.cilj == "Počasi pridobiti":
                 return 75 + 5.7 * int(self.postava.visina) + 14.5 * int(self.postava.teza) - 6.4 * int(self.postava.starost)
-
             elif self.cilj == "Počasi izgubiti":
                 return 70 + 5.3 * int(self.postava.visina) + 14 * int(self.postava.teza) - 6.8 * int(self.postava.starost)
-
             elif self.cilj == "Izgubiti":
                 return 65 + 5 * int(self.postava.visina) + 13.5 * int(self.postava.teza) - 7.1 * int(self.postava.starost)
-
             elif self.cilj == "Hitro izgubiti":
                 return 60 + 4.7 * int(self.postava.visina) + 13 * int(self.postava.teza) - 7.4 * int(self.postava.starost)
-
         elif self.postava.spol == "Ženski":
-
             if self.cilj == "Hitro pridobiti":
                 return 830 + 3.4 * int(self.postava.visina) + 11.3 * int(self.postava.teza) - 3.5 * int(self.postava.starost)
-
             elif self.cilj == "Pridobiti":
                 return 805 + 3.2 * int(self.postava.visina) + 11 * int(self.postava.teza) - 3.7 * int(self.postava.starost)
-
             elif self.cilj == "Počasi pridobiti":
                 return 780 + 3 * int(self.postava.visina) + 10.7 * int(self.postava.teza) - 3.9 * int(self.postava.starost)
-
             elif self.cilj == "Počasi izgubiti":
                 return 730 + 2.4 * int(self.postava.visina) + 9.8 * int(self.postava.teza) - 4.5 * int(self.postava.starost)
-
             elif self.cilj == "Izgubiti":
                 return 705 + 2.2 * int(self.postava.visina) + 9.5 * int(self.postava.teza) - 4.7 * int(self.postava.starost)
-
             elif self.cilj == "Hitro izgubiti":
                 return 680 + 2 * int(self.postava.visina) + 9.2 * int(self.postava.teza) - 4.9 * int(self.postava.starost)
 
